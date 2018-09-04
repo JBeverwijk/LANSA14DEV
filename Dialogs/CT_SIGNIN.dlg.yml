@@ -1,0 +1,120 @@
+﻿Web Dialog:
+  Name:               CT_SignIn
+  Enabled For RDMLX:  Yes
+
+  Multilingual Details:
+  - ENG:
+      Description:        "SignIn"
+
+  Source: |
+    Begin_Com Role(*EXTENDS #PRIM_DLG) Layoutmanager(#LayoutMain) Height(585) Width(481) Verticalscroll(True) Style(#StyleNoShadow)
+    
+    * Styles
+    Define_Com Class(#PRIM_VS.Style) Name(#Style_TaskImage) Foregroundbrush(#ForegroundBrush_TaskImage) Backgroundbrush(#BackgroundBrush_TaskImage) Cornerbottomleft(50) Cornerbottomright(50) Cornertopleft(50) Cornertopright(50)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#BackgroundBrush_TaskImage) Color(Theme700)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#ForegroundBrush_TaskImage) Color(255:255:255)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style_Footer) Bordertop(1) Borderbrush(#Borderbrush_Footer) Foregroundbrush(#ForegroundBrush_Footer)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#ForegroundBrush_Footer) Color(ThemeSecondaryText)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#Borderbrush_Footer) Color(240:240:240)
+    Define_Com Class(#PRIM_VS.Style) Name(#Style_Title) Foregroundbrush(#ForegroundBrush_Title) Fontsize(18) Fontunits(Pixel)
+    Define_Com Class(#PRIM_VS.SolidBrush) Name(#ForegroundBrush_Title) Color(ThemeSecondaryText)
+    Define_Com Class(#PRIM_VS.Style) Name(#StyleNoShadow) Effect(*NULL)
+    
+    * Layout - LOGIN PANEL
+    Define_Com Class(#PRIM_TBLO) Name(#LayoutMain)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column1) Displayposition(1) Parent(#LayoutMain) Minwidth(25)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column2) Displayposition(2) Parent(#LayoutMain) Width(8)
+    Define_Com Class(#PRIM_TBLO.Column) Name(#Column3) Displayposition(3) Parent(#LayoutMain) Minwidth(25)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row1) Displayposition(1) Parent(#LayoutMain) Height(30) Units(Pixels)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row2) Displayposition(2) Parent(#LayoutMain) Minheight(180)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row3) Displayposition(3) Parent(#LayoutMain) Units(Pixels) Height(170)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row4) Displayposition(4) Parent(#LayoutMain) Minheight(100)
+    Define_Com Class(#PRIM_TBLO.Row) Name(#Row5) Displayposition(5) Parent(#LayoutMain) Height(30) Units(Pixels)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem1) Column(#Column3) Manage(#ImageHelp) Parent(#LayoutMain) Row(#Row1) Sizing(None) Alignment(TopRight) Marginright(10) Margintop(10)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem2) Column(#Column1) Manage(#Label_Title) Parent(#LayoutMain) Row(#Row2) Sizing(FitToWidth) Flow(Up) Alignment(BottomCenter) Columnspan(3) Marginleft(4) Marginright(4)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem3) Column(#Column2) Manage(#Username) Parent(#LayoutMain) Row(#Row3) Sizing(FitToWidth) Flow(CenterVertical) Margintop(30)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem4) Column(#Column2) Manage(#Password) Parent(#LayoutMain) Row(#Row3) Sizing(FitToWidth) Flow(CenterVertical) Marginbottom(15)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem5) Column(#Column2) Manage(#ButtonSignIn) Parent(#LayoutMain) Row(#Row4) Sizing(None) Alignment(TopRight) Margintop(40)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem6) Column(#Column1) Manage(#Label_Footer) Parent(#LayoutMain) Row(#Row5) Columnspan(3)
+    Define_Com Class(#PRIM_TBLO.Item) Name(#LayoutItem7) Column(#Column2) Manage(#ImageTask) Parent(#LayoutMain) Sizing(None) Row(#Row2) Alignment(BottomCenter) Marginbottom(50)
+    
+    * Controls
+    Define_Com Class(#PRIM_MD.Label) Name(#ImageHelp) Parent(#COM_OWNER) Displayposition(4) Tabposition(5) Left(445) Icon('help') Height(28) Width(24) Opacity(34)
+    Define_Com Class(#PRIM_MD.Label) Name(#ImageTask) Parent(#COM_OWNER) Displayposition(3) Tabposition(4) Left(190) Top(60) Icon('people') Height(100) Iconheight(70) Style(#Style_TaskImage) Iconalignment(Center)
+    Define_Com Class(#PRIM_MD.RaisedButton) Name(#ButtonSignIn) Caption('Sign in') Displayposition(2) Left(332) Parent(#COM_OWNER) Tabposition(3) Top(420) Buttondefault(True) Themedrawstyle('DarkTitle')
+    Define_Com Class(#PRIM_LABL) Name(#Label_Title) Caption('Sign in to Contacts') Displayposition(1) Ellipses(Word) Left(4) Parent(#COM_OWNER) Tabposition(6) Tabstop(False) Top(160) Width(471) Alignment(Center) Style(#Style_Title) Verticalalignment(Center)
+    Define_Com Class(#PRIM_MD.Edit) Name(#Username) Displayposition(5) Left(48) Parent(#COM_OWNER) Tabposition(1) Top(221) Height(82) Width(384) Caption('Email')
+    Define_Com Class(#PRIM_MD.Edit) Name(#Password) Displayposition(6) Left(48) Parent(#COM_OWNER) Tabposition(2) Top(303) Height(82) Width(384) Caption('Password') Passwordchar('*')
+    Define_Com Class(#PRIM_LABL) Name(#Label_Footer) Caption('Powered by LANSA ') Displayposition(7) Ellipses(Word) Height(30) Left(0) Parent(#COM_OWNER) Tabposition(7) Tabstop(False) Top(553) Verticalalignment(Center) Style(#Style_Footer) Alignment(Center) Width(479)
+    
+    Define_Evt Name(Completed)
+    
+    * *************** *
+    * Method Routines *
+    * *************** *
+    
+    Mthroutine Name(LogIn)
+    Define_Com Class(#CT_Server.SignIn) Name(#SignIn)
+    Define_Com Class(#PRIM_STR) Name(#ReturnCode)
+    
+    #Username.Visible := False
+    #Password.Visible := False
+    #ButtonSignIn.Visible := False
+    
+    #Label_Title.Caption := "Signing in..."
+    #COM_OWNER.Image <= #SYS_WEB.LoadingImage
+    
+    #SignIn.ExecuteAsync Username(#Username) Password(#Password) Returncode(#ReturnCode)
+    
+    Evtroutine Handling(#SignIn.Completed)
+    
+    If (#ReturnCode = OK)
+    
+    #COM_OWNER.Close
+    
+    #Password := ""
+    
+    Signal Event(Completed)
+    
+    Endif
+    
+    Endroutine
+    
+    Endroutine
+    
+    * ************** *
+    * Event Routines *
+    * ************** *
+    
+    Evtroutine Handling(#ButtonSignIn.Click)
+    
+    #COM_OWNER.LogIn
+    
+    Endroutine
+    
+    Evtroutine Handling(#SYS_WEB.DeviceChanged)
+    
+    If (#SYS_WEB.Device = Mobile)
+    
+    #COM_OWNER.Placement := FullScreen
+    
+    Else
+    
+    #COM_OWNER.Placement := Center
+    
+    Endif
+    
+    Endroutine
+    
+    Evtroutine Handling(#COM_OWNER.Prepare)
+    
+    #Username.Visible := True
+    #Password.Visible := True
+    #ButtonSignIn.Visible := True
+    
+    #Label_Title.Caption := "Sign in to Contacts"
+    #COM_OWNER.Image <= *NULL
+    
+    Endroutine
+    
+    End_Com

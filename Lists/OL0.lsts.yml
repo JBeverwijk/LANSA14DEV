@@ -1,0 +1,11 @@
+﻿List:
+  Name:               Contacts
+  Stored As:          Repository
+
+  Objects:
+  - xContacts:
+      Type:               File
+      Qualifier:          L14DTADEMD
+
+  - CT_Main:
+      Type:               Web Page
